@@ -10,6 +10,9 @@ export default function NavBar() {
         <li>Calvin S.</li>
         <li>Logout</li>
       </ul>
+      <button type="button" class="btn btn-primary">
+        Primary
+      </button>
     </nav>
   );
 }
