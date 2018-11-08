@@ -8,6 +8,6 @@ export default function questions(state = {}, action) {
         ...action.questions
       };
     default:
-      state;
+      return state;
   }
 }

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 
 class Leaderboard extends Component {
   render() {
@@ -13,9 +14,11 @@ class Leaderboard extends Component {
             <th>Score</th>
           </tr>
         </thead>
+        <tbody />
       </table>
     );
   }
 }
 
 export default Leaderboard;
+//

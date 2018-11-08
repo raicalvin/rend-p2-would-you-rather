@@ -8,6 +8,6 @@ export default function users(state = {}, action) {
         ...action.users
       };
     default:
-      state;
+      return state;
   }
 }
