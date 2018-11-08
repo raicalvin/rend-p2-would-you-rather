@@ -5,7 +5,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <h2>Would You Rather?</h2>
+        <h2 className="page-header">Would You Rather?</h2>
         <NavBar />
       </div>
     );
