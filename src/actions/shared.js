@@ -1,4 +1,4 @@
-import { getInitialData } from "../utils/_DATA.js";
+import { getInitialData } from "../utils/api.js";
 import { receiveUsers } from "./users";
 import { receiveQuestions } from "./questions";
 import { setAuthedUser } from "./authedUser";
