@@ -4,10 +4,10 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 export default function NavBar() {
   return (
     <Router>
-      <nav class="navbar navbar-inverse">
-        <div class="container-fluid">
-          <ul class="nav navbar-nav">
-            <li class="active">
+      <nav className="navbar navbar-inverse">
+        <div className="container-fluid">
+          <ul className="nav navbar-nav">
+            <li className="active">
               <Link to="/">Home</Link>
             </li>
             <li>
@@ -17,15 +17,15 @@ export default function NavBar() {
               <Link to="/add">New Poll</Link>
             </li>
           </ul>
-          <ul class="nav navbar-nav navbar-right">
+          <ul className="nav navbar-nav navbar-right">
             <li>
               <a href="#">
-                <span class="glyphicon glyphicon-user" /> Calvin S.
+                <span className="glyphicon glyphicon-user" /> Calvin S.
               </a>
             </li>
             <li>
               <a href="#">
-                <span class="glyphicon glyphicon-log-in" /> Logout
+                <span className="glyphicon glyphicon-log-in" /> Logout
               </a>
             </li>
           </ul>
