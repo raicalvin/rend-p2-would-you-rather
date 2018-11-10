@@ -15,11 +15,17 @@ class App extends Component {
       <div className="App">
         <h2 className="page-header">Would You Rather?</h2>
         <NavBar />
-        <Leaderboard />
-        <Dashboard />
+        {/* <Leaderboard /> */}
+        {this.props.loading === true ? null : <Dashboard />}
       </div>
     );
   }
+}
+
+function mapStateToProps({ authedUser }) {
+  return {
+    loading: authedUser === null
+  };
 }
 
 export default connect()(App);
