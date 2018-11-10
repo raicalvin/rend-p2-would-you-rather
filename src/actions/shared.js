@@ -7,7 +7,7 @@ const AUTHED_ID = "sarahedo";
 
 export function handleInitialData() {
   return dispatch => {
-    return getInitialData().then((users, questions) => {
+    return getInitialData().then(({ users, questions }) => {
       // Take the users and the questions and add them to the state of our Redux store
       dispatch(receiveUsers(users));
       dispatch(receiveQuestions(questions));
