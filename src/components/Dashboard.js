@@ -10,11 +10,13 @@ class Dashboard extends Component {
   filterQuestions(questions, authedUser) {
     let filteredQuestions = Object.values(questions);
 
+    let showUnansweredQuestions = this.state.unansweredButtonIsActive;
+
     if (filteredQuestions.length === 0) {
       return null;
     }
 
-    if (this.state.unansweredButtonIsActive) {
+    if (showUnansweredQuestions) {
       return filteredQuestions.filter(
         question =>
           question.optionOne.votes.indexOf(authedUser) === -1 &&
@@ -22,15 +24,13 @@ class Dashboard extends Component {
       );
     }
 
-    console.log(filteredQuestions);
-
-    // if (this.state.unansweredButtonIsActive) {
-    //   questionsToReturn = questions.filter(
-    //     question =>
-    //       question.optionOne.votes.indexOf(authedUser) === -1 ||
-    //       question.optionTwo.votes.indexOf(authedUser) === -1
-    //   );
-    // }
+    if (!showUnansweredQuestions) {
+      return filteredQuestions.filter(
+        question =>
+          question.optionOne.votes.indexOf(authedUser) !== -1 ||
+          question.optionTwo.votes.indexOf(authedUser) !== -1
+      );
+    }
   }
 
   handleActiveButtonClick(event) {
@@ -47,6 +47,7 @@ class Dashboard extends Component {
   }
 
   render() {
+    // Return an array of questions to be displayed
     let filteredQuestionsToDisplay = this.filterQuestions(
       this.props.questions,
       this.props.authedUser
@@ -96,15 +97,6 @@ class Dashboard extends Component {
     );
   }
 }
-
-/*
-          {this.props.questionIds.map(id => (
-            <li key={id} className="question-border">
-              <div>Question ID: {id}</div>
-              <Question id={id} />
-            </li>
-          ))}
-*/
 
 // Get necessary information from Redux store state
 function mapStateToProps({ questions, authedUser }) {
