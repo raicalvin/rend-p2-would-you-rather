@@ -5,10 +5,21 @@ import Question from "./Question.js";
 class Dashboard extends Component {
   render() {
     console.log(this.props.questionIds);
+    /*
+      Check to see who authedUser is.
+      Check to see which button is active (answered or unanswered).
+      Sort through questions to make sure the id of authedUser matches a vote answer.
+      Display the questions that do not match for unanswered in the unanswered section
+    */
     return (
       <div>
-        <h2 className="center">Dashboard</h2>
-        <ul className="center">
+        <h2>Dashboard</h2>
+        <div className="center-flex-items">
+          <button className="btn btn-primary">Unanswered Polls</button>
+          <button className="btn btn-primary active">Answered Polls</button>
+        </div>
+
+        <ul className="center center-flex-items">
           {this.props.questionIds.map(id => (
             <li key={id} className="question-border">
               <div>Question ID: {id}</div>
