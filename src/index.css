@@ -42,12 +42,6 @@ h2 {
   width: 90%;
 }
 
-.selection-buttons {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .center-flex-items {
   display: flex;
   flex-wrap: wrap;
