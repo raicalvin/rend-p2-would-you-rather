@@ -7,10 +7,33 @@ class Dashboard extends Component {
     unansweredButtonIsActive: true
   };
 
-  filterQuestions(questions, authedUser) {}
+  filterQuestions(questions, authedUser) {
+    let filteredQuestions = Object.values(questions);
+
+    if (filteredQuestions.length === 0) {
+      return null;
+    }
+
+    if (this.state.unansweredButtonIsActive) {
+      return filteredQuestions.filter(
+        question =>
+          question.optionOne.votes.indexOf(authedUser) === -1 &&
+          question.optionTwo.votes.indexOf(authedUser) === -1
+      );
+    }
+
+    console.log(filteredQuestions);
+
+    // if (this.state.unansweredButtonIsActive) {
+    //   questionsToReturn = questions.filter(
+    //     question =>
+    //       question.optionOne.votes.indexOf(authedUser) === -1 ||
+    //       question.optionTwo.votes.indexOf(authedUser) === -1
+    //   );
+    // }
+  }
 
   handleActiveButtonClick(event) {
-    console.log(`${event.target.id} was clicked!`);
     if (event.target.id === "unanswered-poll-button") {
       this.setState({
         unansweredButtonIsActive: true
@@ -24,15 +47,19 @@ class Dashboard extends Component {
   }
 
   render() {
-    /*
-      Check to see who authedUser is.
-      Check to see which button is active (answered or unanswered).
-      Sort through questions to make sure the id of authedUser matches a vote answer.
-      Display the questions that do not match for unanswered in the unanswered section
-    */
+    let filteredQuestionsToDisplay = this.filterQuestions(
+      this.props.questions,
+      this.props.authedUser
+    );
+
+    if (filteredQuestionsToDisplay === null) {
+      return <div>Loading...</div>;
+    }
+
     return (
       <div>
         <h2>Dashboard</h2>
+
         <div
           className="center-flex-items"
           onClick={this.handleActiveButtonClick.bind(this)}
@@ -58,10 +85,10 @@ class Dashboard extends Component {
         </div>
 
         <ul className="center center-flex-items">
-          {this.props.questionIds.map(id => (
-            <li key={id} className="question-border">
-              <div>Question ID: {id}</div>
-              <Question id={id} />
+          {filteredQuestionsToDisplay.map(question => (
+            <li key={question.id} className="question-border">
+              <div>Question ID: {question.id}</div>
+              <Question id={question.id} />
             </li>
           ))}
         </ul>
@@ -70,9 +97,19 @@ class Dashboard extends Component {
   }
 }
 
+/*
+          {this.props.questionIds.map(id => (
+            <li key={id} className="question-border">
+              <div>Question ID: {id}</div>
+              <Question id={id} />
+            </li>
+          ))}
+*/
+
 // Get necessary information from Redux store state
 function mapStateToProps({ questions, authedUser }) {
   return {
+    questions,
     questionIds: Object.keys(questions).sort(
       (a, b) => questions[b].timestamp - questions[a].timestamp
     ),
