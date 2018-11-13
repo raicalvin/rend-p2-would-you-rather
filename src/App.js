@@ -16,6 +16,7 @@ class App extends Component {
         <h2 className="page-header">Would You Rather?</h2>
         <NavBar />
         {/* <Leaderboard /> */}
+        <Leaderboard />
         {this.props.loading === true ? null : <Dashboard />}
       </div>
     );

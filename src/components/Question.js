@@ -14,6 +14,8 @@ class Question extends Component {
   }
 }
 
+// The first argument is data we are destructuring from the store { authedUser, users, questions }
+// The second argument is the regular props being passed into the Question component { id }
 function mapStateToProps({ authedUser, users, questions }, { id }) {
   const question = questions[id];
   const firstOption = question.optionOne.text;
