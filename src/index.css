@@ -48,3 +48,9 @@ h2 {
   align-items: center;
   justify-content: center;
 }
+
+.login-border {
+  border: 1px solid gray;
+  border-radius: 12px;
+  width: 40%;
+}

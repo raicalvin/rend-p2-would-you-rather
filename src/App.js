@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import NavBar from "./components/NavBar.js";
+import Login from "./components/Login";
 import Leaderboard from "./components/Leaderboard";
 import Dashboard from "./components/Dashboard";
 import { connect } from "react-redux";
@@ -18,6 +19,7 @@ class App extends Component {
         {/* <Leaderboard /> */}
         <Leaderboard />
         {this.props.loading === true ? null : <Dashboard />}
+        <Login />
       </div>
     );
   }
