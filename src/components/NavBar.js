@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 
 class NavBar extends Component {
   render() {
-    console.log("HEyyyyyy", this.props.authedUser);
     return (
       <nav className="navbar navbar-inverse">
         <div className="container-fluid">

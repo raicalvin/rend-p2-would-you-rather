@@ -31,7 +31,6 @@ class App extends Component {
 
   render() {
     let { authedUser } = this.props;
-    console.log("Well hello there my little friend: ", authedUser);
     return (
       <Router>
         <div className="App">

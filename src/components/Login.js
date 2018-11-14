@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { setAuthedUser } from "../actions/authedUser";
+import { setAuthedUser, clearAuthedUser } from "../actions/authedUser";
 import { Redirect } from "react-router-dom";
 
 class Login extends Component {
@@ -13,9 +13,10 @@ class Login extends Component {
   authenticateUser(e) {
     if (!this.state.userSelected) {
       alert("Please select a user to login");
+    } else {
+      this.setState({ okToLogin: true });
+      this.props.dispatch(setAuthedUser(this.state.userId));
     }
-    this.setState({ okToLogin: true });
-    this.props.dispatch(setAuthedUser(this.state.userId));
   }
 
   handleUserSelection(e) {
@@ -25,9 +26,12 @@ class Login extends Component {
     );
   }
 
+  // When component mounts, clear the user so that user CANNOT get into other parts of the app
+  componentDidMount() {
+    this.props.dispatch(clearAuthedUser(this.state.userId));
+  }
+
   render() {
-    console.log(this.props.users);
-    console.log(this.state);
     if (this.state.okToLogin) {
       return <Redirect to="/" />;
     }
