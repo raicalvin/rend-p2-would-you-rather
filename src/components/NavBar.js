@@ -1,9 +1,11 @@
-import React from "react";
+import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { connect } from "react-redux";
 
-export default function NavBar() {
-  return (
-    <Router>
+class NavBar extends Component {
+  render() {
+    console.log("HEyyyyyy", this.props.authedUser);
+    return (
       <nav className="navbar navbar-inverse">
         <div className="container-fluid">
           <ul className="nav navbar-nav">
@@ -19,18 +21,22 @@ export default function NavBar() {
           </ul>
           <ul className="nav navbar-nav navbar-right">
             <li>
-              <a href="#">
-                <span className="glyphicon glyphicon-user" /> Calvin S.
-              </a>
+              <Link to="login">Calvin S.</Link>
             </li>
             <li>
-              <a href="#">
-                <span className="glyphicon glyphicon-log-in" /> Logout
-              </a>
+              <Link to="/login">Logout</Link>
             </li>
           </ul>
         </div>
       </nav>
-    </Router>
-  );
+    );
+  }
 }
+
+function mapStateToProps({ authedUser }) {
+  return {
+    authedUser
+  };
+}
+
+export default connect(mapStateToProps)(NavBar);
