@@ -1,17 +1,20 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { setAuthedUser } from "../actions/authedUser";
+import { Redirect } from "react-router-dom";
 
 class Login extends Component {
   state = {
     userSelected: false,
-    userId: ""
+    userId: "",
+    okToLogin: false
   };
 
-  authenticateUser(user) {
+  authenticateUser(e) {
     if (!this.state.userSelected) {
       alert("Please select a user to login");
     }
+    this.setState({ okToLogin: true });
     this.props.dispatch(setAuthedUser(this.state.userId));
   }
 
@@ -24,8 +27,12 @@ class Login extends Component {
 
   render() {
     console.log(this.props.users);
+    console.log(this.state);
+    if (this.state.okToLogin) {
+      return <Redirect to="/" />;
+    }
     return (
-      <div className="login-border center-flex-items">
+      <div className="login-border center-login center-flex-items">
         <span>Please select a user and login...</span>
         <div className="center-flex-items">
           <select onChange={this.handleUserSelection.bind(this)}>
