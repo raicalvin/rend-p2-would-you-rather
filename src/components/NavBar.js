@@ -20,7 +20,7 @@ class NavBar extends Component {
           </ul>
           <ul className="nav navbar-nav navbar-right">
             <li>
-              <Link to="login">Calvin S.</Link>
+              <Link to="/login">Calvin S.</Link>
             </li>
             <li>
               <Link to="/login">Logout</Link>
