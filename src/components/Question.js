@@ -4,13 +4,23 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 //import { formatQuestion } from "../utils/_DATA.js";
 
 class Question extends Component {
+  handleAnswerClick(e) {
+    e.preventDefault();
+    const { dispatch } = this.props;
+    console.log(dispatch);
+  }
+
   render() {
     const id = this.props.id;
     return (
       <Link to={`/questions/${id}`}>
         <h3>Would you rather...</h3>
-        <button className="btn btn-primary">{this.props.firstOption}</button>
-        <button className="btn btn-primary">{this.props.secondOption}</button>
+        <button onClick={this.handleAnswerClick} className="btn btn-primary">
+          {this.props.firstOption}
+        </button>
+        <button onClick={this.handleAnswerClick} className="btn btn-primary">
+          {this.props.secondOption}
+        </button>
       </Link>
     );
   }
