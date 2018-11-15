@@ -20,7 +20,6 @@ class Login extends Component {
   }
 
   handleUserSelection(e) {
-    console.log(e.target.value);
     this.setState({ userSelected: true, userId: e.target.value }, () =>
       console.log(this.state)
     );

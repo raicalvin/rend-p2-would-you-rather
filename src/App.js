@@ -11,9 +11,9 @@ import {
   Link,
   Redirect
 } from "react-router-dom";
+import QuestionView from "./components/QuestionView.js";
 
 const PrivateRoute = ({ component: Component, authedUser, ...rest }) => {
-  console.log("YOooOOoOo, the user is ", authedUser);
   return (
     <Route
       {...rest}
@@ -48,6 +48,11 @@ class App extends Component {
           <PrivateRoute
             path="/leaderboard"
             component={Leaderboard}
+            authedUser={authedUser}
+          />
+          <PrivateRoute
+            path="/questions/:id"
+            component={QuestionView}
             authedUser={authedUser}
           />
         </div>

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Question from "./Question.js";
+import QuestionView from "./QuestionView";
 
 class Dashboard extends Component {
   state = {

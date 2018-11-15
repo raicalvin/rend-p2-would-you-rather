@@ -1,15 +1,17 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 //import { formatQuestion } from "../utils/_DATA.js";
 
 class Question extends Component {
   render() {
+    const id = this.props.id;
     return (
-      <div>
+      <Link to={`/questions/${id}`}>
         <h3>Would you rather...</h3>
         <button className="btn btn-primary">{this.props.firstOption}</button>
         <button className="btn btn-primary">{this.props.secondOption}</button>
-      </div>
+      </Link>
     );
   }
 }
@@ -24,7 +26,8 @@ function mapStateToProps({ authedUser, users, questions }, { id }) {
   return {
     authedUser,
     firstOption,
-    secondOption
+    secondOption,
+    question
     // question: formatQuestion(question)
   };
 }
