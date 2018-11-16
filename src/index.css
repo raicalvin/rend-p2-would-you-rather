@@ -94,3 +94,12 @@ input[type="text"] {
 .add-ques-btn {
   width: 200px;
 }
+
+.center-options-buttons {
+  display: flex;
+  justify-content: center;
+}
+
+.center-options-buttons > button {
+  width: 360px;
+}

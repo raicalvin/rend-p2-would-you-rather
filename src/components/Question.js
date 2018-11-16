@@ -41,22 +41,24 @@ class Question extends Component {
     return (
       <Link to={`/questions/${id}`}>
         <h3>Would you rather...</h3>
-        <button
-          onClick={this.handleAnswerClick.bind(this)}
-          className={"btn btn-primary"}
-          id="optionOne"
-          disabled={isDisabled1}
-        >
-          {this.props.firstOption}
-        </button>
-        <button
-          onClick={this.handleAnswerClick.bind(this)}
-          className={"btn btn-primary"}
-          id="optionTwo"
-          disabled={isDisabled2}
-        >
-          {this.props.secondOption}
-        </button>
+        <div className="center-options-buttons">
+          <button
+            onClick={this.handleAnswerClick.bind(this)}
+            className="btn btn-primary "
+            id="optionOne"
+            disabled={isDisabled1}
+          >
+            {this.props.firstOption}
+          </button>
+          <button
+            onClick={this.handleAnswerClick.bind(this)}
+            className="btn btn-primary "
+            id="optionTwo"
+            disabled={isDisabled2}
+          >
+            {this.props.secondOption}
+          </button>
+        </div>
       </Link>
     );
   }
