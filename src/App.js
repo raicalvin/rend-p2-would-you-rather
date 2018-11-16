@@ -3,6 +3,7 @@ import NavBar from "./components/NavBar.js";
 import Login from "./components/Login";
 import Leaderboard from "./components/Leaderboard";
 import Dashboard from "./components/Dashboard";
+import NewQuestion from "./components/NewQuestion";
 import { connect } from "react-redux";
 import { handleInitialData } from "./actions/shared";
 import {
@@ -53,6 +54,11 @@ class App extends Component {
           <PrivateRoute
             path="/questions/:id"
             component={QuestionView}
+            authedUser={authedUser}
+          />
+          <PrivateRoute
+            path="/add"
+            component={NewQuestion}
             authedUser={authedUser}
           />
         </div>
