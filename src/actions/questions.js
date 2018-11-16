@@ -1,7 +1,8 @@
-import { saveQuestionAnswer } from "../utils/api";
+import { saveQuestionAnswer, saveQuestion } from "../utils/api";
 
 export const RECEIVE_QUESTIONS = "RECEIVE_QUESTIONS";
 export const ANSWER_QUESTION = "ANSWER_QUESTION";
+export const ADD_QUESTION = "ADD_QUESTION";
 
 // Action Creator for receiving questions
 export function receiveQuestions(questions) {
@@ -37,5 +38,26 @@ export function handleAnswerQuestion(info) {
     return saveQuestionAnswer(payload).then(() =>
       dispatch(answerQuestion(payload))
     );
+  };
+}
+
+// ============ SAVE QUESTION
+// action creator
+function addQuestion(question) {
+  return {
+    type: ADD_QUESTION,
+    question
+  };
+}
+
+// asynchronous action creator
+export function handleAddQuestion(info) {
+  return (dispatch, getState) => {
+    const { authedUser } = getState();
+    return saveQuestion({
+      author: authedUser,
+      optionOneText: info.opt1,
+      optionTwoText: info.opt2
+    }).then(newQuestion => dispatch(addQuestion(newQuestion)));
   };
 }

@@ -15,30 +15,33 @@ class Leaderboard extends Component {
   render() {
     this.rankUsersScores(this.props.users);
     return (
-      <table className="table table-hover">
-        <thead>
-          <tr>
-            <th>Avatar</th>
-            <th>Name</th>
-            <th>Answered</th>
-            <th>Asked</th>
-            <th>Score</th>
-          </tr>
-        </thead>
-        <tbody>
-          {this.rankUsersScores(this.props.users).map(user => (
-            <tr key={user.id}>
-              <td>{user.avatarURL}</td>
-              <td>{user.name}</td>
-              <td>{Object.keys(user.answers).length}</td>
-              <td>{user.questions.length}</td>
-              <td>
-                {Object.keys(user.answers).length + user.questions.length}
-              </td>
+      <div>
+        <h2>Leaderboard</h2>
+        <table className="table table-hover">
+          <thead>
+            <tr>
+              <th>Avatar</th>
+              <th>Name</th>
+              <th>Answered</th>
+              <th>Asked</th>
+              <th>Score</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {this.rankUsersScores(this.props.users).map(user => (
+              <tr key={user.id}>
+                <td>{user.avatarURL}</td>
+                <td>{user.name}</td>
+                <td>{Object.keys(user.answers).length}</td>
+                <td>{user.questions.length}</td>
+                <td>
+                  {Object.keys(user.answers).length + user.questions.length}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     );
   }
 }

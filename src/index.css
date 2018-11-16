@@ -70,3 +70,27 @@ h2 {
 .selected-answer {
   color: black;
 }
+
+h3 {
+  text-align: center;
+}
+
+form {
+  text-align: center;
+}
+
+input[type="text"] {
+  border: 1px solid gray;
+  border-radius: 8px;
+  padding: 8px;
+  margin: 8px;
+}
+
+.center-btn {
+  display: flex;
+  justify-content: center;
+}
+
+.add-ques-btn {
+  width: 200px;
+}

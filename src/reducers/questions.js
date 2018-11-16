@@ -1,4 +1,8 @@
-import { RECEIVE_QUESTIONS, ANSWER_QUESTION } from "../actions/questions";
+import {
+  RECEIVE_QUESTIONS,
+  ANSWER_QUESTION,
+  ADD_QUESTION
+} from "../actions/questions";
 
 export default function questions(state = {}, action) {
   switch (action.type) {
@@ -7,6 +11,7 @@ export default function questions(state = {}, action) {
         ...state,
         ...action.questions
       };
+    // HANDLE ANSWEREING A NEW QUESTION
     case ANSWER_QUESTION:
       // return a new object state
       // spread all the previous questions out from state
@@ -23,6 +28,13 @@ export default function questions(state = {}, action) {
             ]
           }
         }
+      };
+    // ADD A NEW QUESTION TO THE STORE
+    case ADD_QUESTION:
+      const { question } = action;
+      return {
+        ...state,
+        [question.id]: question
       };
     default:
       return state;
