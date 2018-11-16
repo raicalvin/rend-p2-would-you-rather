@@ -7,33 +7,53 @@ class Question extends Component {
   handleAnswerClick(e) {
     const { dispatch, authedUser, question } = this.props;
     const answer = e.target.id;
+    console.log(e.target);
     // need to pass it an info object that contains authedUser, qId, and answer
-    console.log(answer);
-    dispatch(
-      handleAnswerQuestion({
-        authedUser,
-        qId: question.id,
-        answer
-      })
-    );
+    if (
+      question.optionOne.votes.indexOf(authedUser) === -1 &&
+      question.optionTwo.votes.indexOf(authedUser) === -1
+    ) {
+      dispatch(
+        handleAnswerQuestion({
+          authedUser,
+          qId: question.id,
+          answer
+        })
+      );
+    } else {
+      alert("Oh yup. You can only select one answer!");
+    }
   }
+
+  checkIfAlreadyAnswered() {}
 
   render() {
     const id = this.props.id;
+    // todo: call function to check if authedUser already answered question -> alert if they did
+    // todo: disable clicking if already answered
+    console.log(this.props);
+
+    let isDisabled1 =
+      this.props.question.optionOne.votes.indexOf(this.props.authedUser) !== -1;
+    let isDisabled2 =
+      this.props.question.optionTwo.votes.indexOf(this.props.authedUser) !== -1;
+
     return (
       <Link to={`/questions/${id}`}>
         <h3>Would you rather...</h3>
         <button
           onClick={this.handleAnswerClick.bind(this)}
-          className="btn btn-primary"
+          className={"btn btn-primary"}
           id="optionOne"
+          disabled={isDisabled1}
         >
           {this.props.firstOption}
         </button>
         <button
           onClick={this.handleAnswerClick.bind(this)}
-          className="btn btn-primary"
+          className={"btn btn-primary"}
           id="optionTwo"
+          disabled={isDisabled2}
         >
           {this.props.secondOption}
         </button>
