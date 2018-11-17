@@ -101,5 +101,6 @@ input[type="text"] {
 }
 
 .center-options-buttons > button {
-  width: 360px;
+  width: 240px;
+  white-space: normal;
 }
