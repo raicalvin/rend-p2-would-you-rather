@@ -104,3 +104,10 @@ input[type="text"] {
   width: 240px;
   white-space: normal;
 }
+
+.avatar {
+  border-radius: 100%;
+  height: 75px;
+  width: 75px;
+  margin-bottom: 12px;
+}

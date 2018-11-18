@@ -31,7 +31,7 @@ class Question extends Component {
     const id = this.props.id;
     // todo: call function to check if authedUser already answered question -> alert if they did
     // todo: disable clicking if already answered
-    console.log(this.props);
+    let avatarUrl = this.props.users[this.props.question.author].avatarURL;
 
     let isDisabled1 =
       this.props.question.optionOne.votes.indexOf(this.props.authedUser) !== -1;
@@ -40,7 +40,11 @@ class Question extends Component {
 
     return (
       <Link to={`/questions/${id}`}>
+        <div className="center-flex-items">
+          <img className="avatar" src={avatarUrl} />
+        </div>
         <h3>Would you rather...</h3>
+
         <div className="center-options-buttons">
           <button
             onClick={this.handleAnswerClick.bind(this)}
@@ -75,7 +79,8 @@ function mapStateToProps({ authedUser, users, questions }, { id }) {
     authedUser,
     firstOption,
     secondOption,
-    question
+    question,
+    users
     // question: formatQuestion(question)
   };
 }
