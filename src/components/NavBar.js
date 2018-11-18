@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 
 class NavBar extends Component {
   render() {
+    console.log(this.props);
     return (
       <nav className="navbar navbar-inverse">
         <div className="container-fluid">
@@ -20,10 +21,10 @@ class NavBar extends Component {
           </ul>
           <ul className="nav navbar-nav navbar-right">
             <li>
-              <Link to="/login">Calvin S.</Link>
+              <span>{this.props.authedUser}</span>
             </li>
             <li>
-              <Link to="/login">Logout</Link>
+              <Link to="/login">{this.props.authedUser ? "Logout" : ""}</Link>
             </li>
           </ul>
         </div>

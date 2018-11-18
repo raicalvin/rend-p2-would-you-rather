@@ -9,7 +9,7 @@ class Dashboard extends Component {
   };
 
   filterQuestions(questions, authedUser) {
-    let filteredQuestions = Object.values(questions);
+    let filteredQuestions = this.props.questionIds.map(key => questions[key]);
 
     let showUnansweredQuestions = this.state.unansweredButtonIsActive;
 
@@ -17,6 +17,7 @@ class Dashboard extends Component {
       return null;
     }
 
+    // Unanswered questions list
     if (showUnansweredQuestions) {
       return filteredQuestions.filter(
         question =>
@@ -25,6 +26,7 @@ class Dashboard extends Component {
       );
     }
 
+    // Answered questions list
     if (!showUnansweredQuestions) {
       return filteredQuestions.filter(
         question =>
