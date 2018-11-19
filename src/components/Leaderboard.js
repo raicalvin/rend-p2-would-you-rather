@@ -30,7 +30,11 @@ class Leaderboard extends Component {
           <tbody>
             {this.rankUsersScores(this.props.users).map(user => (
               <tr key={user.id}>
-                <td>{user.avatarURL}</td>
+                <td>
+                  <div className="center-flex-items">
+                    <img className="avatar" src={user.avatarURL} />
+                  </div>
+                </td>
                 <td>{user.name}</td>
                 <td>{Object.keys(user.answers).length}</td>
                 <td>{user.questions.length}</td>
