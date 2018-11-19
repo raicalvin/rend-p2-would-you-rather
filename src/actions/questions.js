@@ -44,6 +44,7 @@ export function handleAnswerQuestion(info) {
 // ============ SAVE QUESTION
 // action creator
 function addQuestion(question) {
+  console.log(question);
   return {
     type: ADD_QUESTION,
     question
