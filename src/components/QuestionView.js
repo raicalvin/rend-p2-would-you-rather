@@ -9,7 +9,7 @@ class QuestionView extends Component {
     const { id } = this.props.match.params;
     return (
       <div className="question-border center center-flex-items single-question-view">
-        <Question id={id} />
+        <Question id={id} test={"YoOoOoOooo"} />
       </div>
     );
   }

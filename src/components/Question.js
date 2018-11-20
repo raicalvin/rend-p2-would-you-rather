@@ -4,6 +4,10 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { handleAnswerQuestion } from "../actions/questions";
 
 class Question extends Component {
+  componentDidMount() {
+    console.log("Hellooooooooo what uPPPPPPP");
+    console.log(this.props.users);
+  }
   handleAnswerClick(e) {
     const { dispatch, authedUser, question } = this.props;
     const answer = e.target.id;
@@ -25,18 +29,42 @@ class Question extends Component {
     }
   }
 
-  checkIfAlreadyAnswered() {}
+  showVotesCount(opt1Disabled, opt2Disabled) {
+    if (opt1Disabled || opt2Disabled) {
+      let opt1Votes = this.props.questions[this.props.question.id].optionOne
+        .votes.length; // votes of option 1
+      let opt2Votes = this.props.questions[this.props.question.id].optionTwo
+        .votes.length; // votes of option 2
+      let totalVotes = opt1Votes + opt2Votes; // total votes
+      let opt1Percent = ((opt1Votes / totalVotes) * 100).toFixed(1);
+      let opt2Percent = ((opt2Votes / totalVotes) * 100).toFixed(1);
+      console.log(opt1Percent, opt2Percent);
+      return (
+        <div>
+          <div className="center-options-buttons">
+            <span>{opt1Percent + "%"}</span>
+            <span>{opt2Percent + "%"}</span>
+          </div>
+          <div className="center-options-buttons">
+            <span>Votes: {opt1Votes}</span>
+            <span>Votes: {opt2Votes}</span>
+          </div>
+        </div>
+      );
+    }
+  }
 
   render() {
     const id = this.props.id;
-    // todo: call function to check if authedUser already answered question -> alert if they did
-    // todo: disable clicking if already answered
+
     let avatarUrl = this.props.users[this.props.question.author].avatarURL;
 
     let isDisabled1 =
       this.props.question.optionOne.votes.indexOf(this.props.authedUser) !== -1;
     let isDisabled2 =
       this.props.question.optionTwo.votes.indexOf(this.props.authedUser) !== -1;
+
+    let resultsHeading = this.showVotesCount(isDisabled1, isDisabled2);
 
     return (
       <Link to={`/questions/${id}`}>
@@ -63,6 +91,9 @@ class Question extends Component {
             {this.props.secondOption}
           </button>
         </div>
+        <div>
+          <span>{resultsHeading}</span>
+        </div>
       </Link>
     );
   }
@@ -80,6 +111,7 @@ function mapStateToProps({ authedUser, users, questions }, { id }) {
     firstOption,
     secondOption,
     question,
+    questions,
     users
     // question: formatQuestion(question)
   };

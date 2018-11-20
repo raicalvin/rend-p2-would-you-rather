@@ -105,9 +105,24 @@ input[type="text"] {
   white-space: normal;
 }
 
+.center-options-buttons > span {
+  width: 240px;
+  white-space: normal;
+  text-align: center;
+}
+
 .avatar {
   border-radius: 100%;
   height: 75px;
   width: 75px;
   margin-bottom: 12px;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+.center-options-buttons > span:hover {
+  text-decoration: none;
+  cursor: default;
 }
