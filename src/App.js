@@ -4,6 +4,7 @@ import Login from "./components/Login";
 import Leaderboard from "./components/Leaderboard";
 import Dashboard from "./components/Dashboard";
 import NewQuestion from "./components/NewQuestion";
+import NotFoundPage from "./components/NotFoundPage";
 import { connect } from "react-redux";
 import { handleInitialData } from "./actions/shared";
 import {
