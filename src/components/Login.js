@@ -34,9 +34,6 @@ class Login extends Component {
     const { location } = this.props;
     const prevLocation = location.state;
     console.log("Previous location was:", prevLocation);
-    // if (this.state.okToLogin) {
-    //   return <Redirect to={prevLocation} />;
-    // }
 
     if (this.state.okToLogin && prevLocation) {
       console.log("Redirecting to PREVIOUS LOCATION");
