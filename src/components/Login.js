@@ -31,19 +31,34 @@ class Login extends Component {
   }
 
   render() {
-    if (this.state.okToLogin) {
+    const { location } = this.props;
+    const prevLocation = location.state;
+    console.log("Previous location was:", prevLocation);
+    // if (this.state.okToLogin) {
+    //   return <Redirect to={prevLocation} />;
+    // }
+
+    if (this.state.okToLogin && prevLocation) {
+      console.log("Redirecting to PREVIOUS LOCATION");
+      return <Redirect to={prevLocation} />;
+    } else if (this.state.okToLogin) {
+      console.log("Redirecting to HOME");
       return <Redirect to="/" />;
     }
+
     return (
       <div className="login-border center-login center-flex-items">
         <span>Please select a user and login...</span>
         <div className="center-flex-items">
-          <select onChange={this.handleUserSelection.bind(this)}>
-            <option value="" disabled selected>
+          <select
+            defaultValue={""}
+            onChange={this.handleUserSelection.bind(this)}
+          >
+            <option value="" disabled>
               Select Users...
             </option>
             {this.props.users.map(user => (
-              <option>{user.id}</option>
+              <option key={user.id}>{user.id}</option>
             ))}
           </select>
           <button

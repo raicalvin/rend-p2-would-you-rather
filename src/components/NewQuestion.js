@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
 import { handleAddQuestion } from "../actions/questions";
 
 class NewQuestion extends Component {
   state = {
     optionOneInput: "",
-    optionTwoInput: ""
+    optionTwoInput: "",
+    questionSubmitted: false
   };
 
   handleChange(e) {
@@ -31,7 +33,8 @@ class NewQuestion extends Component {
     // reset the input value fields to blank values
     this.setState(() => ({
       optionOneInput: "",
-      optionTwoInput: ""
+      optionTwoInput: "",
+      questionSubmitted: true
     }));
     // add question to the store
     const { dispatch } = this.props;
@@ -44,6 +47,9 @@ class NewQuestion extends Component {
   }
 
   render() {
+    if (this.state.questionSubmitted) {
+      return <Redirect to="/" />;
+    }
     return (
       <div>
         <h2>New Question</h2>

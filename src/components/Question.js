@@ -5,7 +5,6 @@ import { handleAnswerQuestion } from "../actions/questions";
 
 class Question extends Component {
   componentDidMount() {
-    console.log("Hellooooooooo what uPPPPPPP");
     console.log(this.props.users);
   }
   handleAnswerClick(e) {
