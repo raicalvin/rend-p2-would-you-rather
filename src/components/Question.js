@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { handleAnswerQuestion } from "../actions/questions";
 
 class Question extends Component {
@@ -112,7 +112,6 @@ function mapStateToProps({ authedUser, users, questions }, { id }) {
     question,
     questions,
     users
-    // question: formatQuestion(question)
   };
 }
 
