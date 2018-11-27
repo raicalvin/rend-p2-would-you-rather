@@ -20,7 +20,9 @@ Include information about the concepts, technologies, packages, and frameworks u
 
 ## User Experience
 
-Coming soon...
+When a user opens the application, they are greeted with a login page that simulates multiple people being able to log into their personal game accounts. Users can navigate to the different parts of the app using the navigation panel and users can view question details and answers by clicking on specific questions from their Dashboard.
+
+Users are also able to add questions of their own which will appear to all users as well as answers other users' questions and view total scores on the Leaderboard.
 
 ## Getting Started
 
