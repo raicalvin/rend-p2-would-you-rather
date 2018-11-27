@@ -91,7 +91,6 @@ class Dashboard extends Component {
         <ul className="center center-flex-items">
           {filteredQuestionsToDisplay.map(question => (
             <li key={question.id} className="question-border">
-              <div>Question ID: {question.id}</div>
               <Question id={question.id} />
             </li>
           ))}
