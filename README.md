@@ -16,7 +16,7 @@ Include information about the concepts, technologies, packages, and frameworks u
 
 ## User Interface
 
-Coming soon...
+![](https://github.com/raicalvin/pictures/blob/master/pix-rend-p2-would-you-rather/pic1.png)![](https://github.com/raicalvin/pictures/blob/master/pix-rend-p2-would-you-rather/pic2.png)![](https://github.com/raicalvin/pictures/blob/master/pix-rend-p2-would-you-rather/pic3.png)
 
 ## User Experience
 
